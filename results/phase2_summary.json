@@ -1,0 +1,41 @@
+{
+  "phase": "II-A: expiry-tail geometry after conditioning on ATM scale",
+  "split_date": "2025-01-01",
+  "development_expiries": 209,
+  "evaluation_expiries": 73,
+  "evaluation_start": "2025-01-03",
+  "evaluation_end": "2026-05-13",
+  "evaluation_breaches_abs_z_ge_1": 23,
+  "identity_max_error_z_target": 1.3322676295501878e-14,
+  "headline_metrics": [
+    {"event":"two_sided_1sigma","model":"level_controls","n":73,"events":23,"rate":0.3150684931506849,"brier":0.22676220206823444,"logloss":0.6475872785010266,"auc":0.5008695652173913,"year":null},
+    {"event":"two_sided_1sigma","model":"plus_shape","n":73,"events":23,"rate":0.3150684931506849,"brier":0.2287678227493025,"logloss":0.6527504193494592,"auc":0.4930434782608696,"year":null},
+    {"event":"down_1sigma","model":"level_controls","n":73,"events":13,"rate":0.1780821917808219,"brier":0.15643739428315634,"logloss":0.500555450923154,"auc":0.5743589743589744,"year":null},
+    {"event":"down_1sigma","model":"plus_shape","n":73,"events":13,"rate":0.1780821917808219,"brier":0.15613101327018897,"logloss":0.49151317601044986,"auc":0.5961538461538461,"year":null},
+    {"event":"up_1sigma","model":"level_controls","n":73,"events":10,"rate":0.136986301369863,"brier":0.12268109852825204,"logloss":0.40682020098899047,"auc":0.6047619047619048,"year":null},
+    {"event":"up_1sigma","model":"plus_shape","n":73,"events":10,"rate":0.136986301369863,"brier":0.11343915615847855,"logloss":0.38522845641588066,"auc":0.6349206349206349,"year":null}
+  ],
+  "bootstrap": [
+    {"event":"two_sided_1sigma","metric":"brier","mean_diff_plus_shape_minus_level":0.0019972223102879658,"ci_lo_95":-0.0048316025012726015,"ci_hi_95":0.008480027377315827,"p_non_improvement_one_sided":0.7256},
+    {"event":"two_sided_1sigma","metric":"logloss","mean_diff_plus_shape_minus_level":0.005147484489263124,"ci_lo_95":-0.010154706301787221,"ci_hi_95":0.01962117448694537,"p_non_improvement_one_sided":0.75785},
+    {"event":"down_1sigma","metric":"brier","mean_diff_plus_shape_minus_level":-0.0003330669645356485,"ci_lo_95":-0.022732382892982163,"ci_hi_95":0.020957350708487463,"p_non_improvement_one_sided":0.49345},
+    {"event":"down_1sigma","metric":"logloss","mean_diff_plus_shape_minus_level":-0.009120714590725828,"ci_lo_95":-0.08571597775846734,"ci_hi_95":0.061561680392612866,"p_non_improvement_one_sided":0.4135},
+    {"event":"up_1sigma","metric":"brier","mean_diff_plus_shape_minus_level":-0.009254000649343827,"ci_lo_95":-0.01981589225363264,"ci_hi_95":0.0010249493856964778,"p_non_improvement_one_sided":0.03835},
+    {"event":"up_1sigma","metric":"logloss","mean_diff_plus_shape_minus_level":-0.0215585327258063,"ci_lo_95":-0.05427521761490213,"ci_hi_95":0.015166680341368168,"p_non_improvement_one_sided":0.11465}
+  ],
+  "conditional_direction": [
+    {"model":"level_controls","n":23,"events":13,"rate":0.5652173913043478,"brier":0.26320417894754783,"logloss":0.7273007397572055,"auc":0.6307692307692307},
+    {"model":"plus_shape","n":23,"events":13,"rate":0.5652173913043478,"brier":0.22410017127644521,"logloss":0.6670552298238377,"auc":0.6846153846153846}
+  ],
+  "conditional_direction_bootstrap": [
+    {"metric":"brier","mean_diff_plus_shape_minus_level":-0.03890379128866102,"ci_lo_95":-0.110291217589923,"ci_hi_95":0.03764081843663075,"p_non_improvement_one_sided":0.15535},
+    {"metric":"logloss","mean_diff_plus_shape_minus_level":-0.05978666519031868,"ci_lo_95":-0.22731476065764736,"ci_hi_95":0.12267737258115706,"p_non_improvement_one_sided":0.25155}
+  ],
+  "width_sign_counts": {
+    "two_sided_1sigma":{"n_widths":8,"n_brier_improvements":0},
+    "down_1sigma":{"n_widths":8,"n_brier_improvements":4},
+    "up_1sigma":{"n_widths":8,"n_brier_improvements":8},
+    "down_given_1sigma_breach":{"n_widths":8,"n_brier_improvements":8}
+  },
+  "interpretation": "Smile geometry does not improve the probability of a two-sided one-scale breach. Directional tail probabilities are more suggestive: the composite shape factor improves the upside-breach Brier score and improves conditional downside-vs-upside classification among realized breaches, but confidence intervals remain wide because only 73 evaluation expiries (23 one-scale breaches) are available. Treat this as hypothesis-generating, not as a confirmed anticipative factor."
+}
