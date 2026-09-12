@@ -17,3 +17,4 @@ _pdf_render/
 # Binary presentation exports are generated locally from aggregate results
 results/figures/*.png
 docs/*.pdf
+!docs/lehalle_one_page_note.pdf
