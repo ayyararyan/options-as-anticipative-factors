@@ -1,0 +1,7 @@
+year,model,n,qlike
+2025,history_only,248,0.18952323560666745
+2025,history_plus_option_level,248,0.15293047396940748
+2025,history_plus_level_plus_skew,248,0.15286911784784982
+2026,history_only,89,0.16087066109060427
+2026,history_plus_option_level,89,0.12589021960567112
+2026,history_plus_level_plus_skew,89,0.12635765664052537
