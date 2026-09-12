@@ -1,0 +1,4 @@
+n,mean_diff,ci_low,ci_high,p_one_sided,comparison,loss,interpretation
+337,-0.036166956018396194,-0.07687456164324898,-0.0046282584556616765,0.0092,level_minus_history,QLIKE,negative favors first model
+337,7.829548354815443e-05,-0.001055006320897441,0.0012118934632624522,0.5594,skew_minus_level,QLIKE,negative favors first model
+337,-0.03608866053484804,-0.07582733722131363,-0.004174626988100709,0.011,full_minus_history,QLIKE,negative favors first model
