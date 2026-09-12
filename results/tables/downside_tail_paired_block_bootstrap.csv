@@ -1,0 +1,4 @@
+n,mean_diff,ci_low,ci_high,p_one_sided,comparison,loss,interpretation
+337,-0.0010783309595915579,-0.003171265960940577,0.0006408940308256937,0.1314,level_minus_history,Brier,negative favors first model
+337,-3.065508469924282e-06,-0.000503920798407149,0.000433601908344646,0.5092,skew_minus_level,Brier,negative favors first model
+337,-0.0010813964680614825,-0.0033308226176891925,0.0007224401246914532,0.1463,full_minus_history,Brier,negative favors first model
