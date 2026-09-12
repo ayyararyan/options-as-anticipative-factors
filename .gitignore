@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+
+# Licensed/raw market data and row-level predictions
+data/*.csv
+data/*.parquet
+data/*.pkl
+results/local/
+results/*local*
+
+# Local document QA renders
+_pdf_render/
+
+# Binary presentation exports are generated locally from aggregate results
+results/figures/*.png
+docs/*.pdf
