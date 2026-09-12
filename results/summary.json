@@ -1,0 +1,28 @@
+{
+  "sample": {"full_start":"2021-01-01","full_end":"2026-05-14","evaluation_start":"2025-01-01","evaluation_end":"2026-05-14","n_eval":337},
+  "primary_question": "Does the 09:59 option-implied level add information for 10:00-15:00 realized variance beyond backward-looking spot/history variables?",
+  "secondary_question": "Does the available crude skew proxy add incremental information beyond option level?",
+  "feature_sets": {
+    "history_only": ["dte","dow","gap","morningret","morningrv","morningrange","rv1","rv5","rv22","lagret1","lagret5"],
+    "history_plus_option_level": ["dte","dow","gap","morningret","morningrv","morningrange","rv1","rv5","rv22","lagret1","lagret5","premium","imp_sd","forward_offset"],
+    "history_plus_level_plus_skew": ["dte","dow","gap","morningret","morningrv","morningrange","rv1","rv5","rv22","lagret1","lagret5","premium","imp_sd","forward_offset","skew"]
+  },
+  "regression_metrics": [
+    {"model":"history_plus_option_level","n":337,"qlike":0.1457892791967887,"log_rmse":0.5550804673615323,"median_abs_pct_error":0.3437292714806928,"corr_variance":0.6021056790864193,"mean_actual_variance":2.49802909270443e-05,"mean_predicted_variance":2.509716747534914e-05},
+    {"model":"history_plus_level_plus_skew","n":337,"qlike":0.14586757468033681,"log_rmse":0.5582044498806494,"median_abs_pct_error":0.36003837050819354,"corr_variance":0.604186139330322,"mean_actual_variance":2.49802909270443e-05,"mean_predicted_variance":2.527661937180348e-05},
+    {"model":"history_only","n":337,"qlike":0.18195623521518486,"log_rmse":0.6334587059257454,"median_abs_pct_error":0.38216072786766586,"corr_variance":0.42891778210819803,"mean_actual_variance":2.49802909270443e-05,"mean_predicted_variance":2.6943359565776357e-05}
+  ],
+  "rv_bootstrap": [
+    {"n":337,"mean_diff":-0.036166956018396194,"ci_low":-0.07687456164324898,"ci_high":-0.0046282584556616765,"p_one_sided":0.0092,"comparison":"level_minus_history","loss":"QLIKE","interpretation":"negative favors first model"},
+    {"n":337,"mean_diff":7.829548354815443e-05,"ci_low":-0.001055006320897441,"ci_high":0.0012118934632624522,"p_one_sided":0.5594,"comparison":"skew_minus_level","loss":"QLIKE","interpretation":"negative favors first model"},
+    {"n":337,"mean_diff":-0.03608866053484804,"ci_low":-0.07582733722131363,"ci_high":-0.004174626988100709,"p_one_sided":0.011,"comparison":"full_minus_history","loss":"QLIKE","interpretation":"negative favors first model"}
+  ],
+  "qlike_improvement_option_level_vs_history_pct": 19.87673353189818,
+  "qlike_change_skew_vs_level_pct": -0.053704554943604405,
+  "tail_metrics_secondary": [
+    {"model":"history_plus_level_plus_skew","n":337,"event_rate":0.07418397626112759,"roc_auc":0.6451282051282051,"average_precision":0.17980773956500076,"brier":0.0679302299201019,"log_loss":0.2578810766832615},
+    {"model":"history_plus_option_level","n":337,"event_rate":0.07418397626112759,"roc_auc":0.6443589743589744,"average_precision":0.1603609291441328,"brier":0.06793329542857184,"log_loss":0.2576429181310511},
+    {"model":"history_only","n":337,"event_rate":0.07418397626112759,"roc_auc":0.627948717948718,"average_precision":0.11209529426247247,"brier":0.0690116263881634,"log_loss":0.2619656093360579}
+  ],
+  "notes": ["Monthly expanding-window estimation.","One-calendar-day purge before each test month.","Duan smearing is estimated from each training window before retransformation.","2025-01-01 through 2026-05-14 is an evaluation block, but it is not claimed to be a pristine prospective holdout for this newly formulated Lehalle-motivated hypothesis.","The skew variable is a crude legacy proxy, not a fully identified eSSVI rho/psi or fixed-delta risk reversal.","Row-level predictions and source market data are excluded from the public repository."]
+}
