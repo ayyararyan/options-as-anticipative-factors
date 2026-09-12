@@ -34,10 +34,6 @@ Adding option-level information reduces QLIKE by **19.9%** relative to the histo
 
 The skew result is intentionally less exciting: adding the legacy skew proxy changes QLIKE by essentially zero (mean paired difference **+0.00008**, 95% interval **[-0.00106, +0.00121]**). On this dataset we therefore **do not** have evidence that this crude shape statistic contributes incremental variance information beyond the option level.
 
-![Nested QLIKE comparison](results/figures/rv_qlike_nested_models.png)
-
-![Cumulative paired QLIKE differences](results/figures/cumulative_qlike_differences.png)
-
 ## Phase II — does smile geometry say *which* tail?
 
 Phase II deliberately changes the estimand. Instead of asking whether a crude skew variable improves the conditional mean of realised variance, it asks whether cross-strike option geometry adds information **after normalising the future expiry return by the ex-ante option-implied movement scale**. In the source panel, `z_target = target_logret / iv_scale` exactly.
@@ -54,15 +50,11 @@ The important negative result survives: **shape does not improve the probability
 
 Conditioning diagnostically on the 23 realised one-scale breaches, adding shape improves downside-vs-upside classification from Brier **0.2632 → 0.2241** and AUC **0.631 → 0.685**, but the bootstrap interval is wide. Across the eight symmetric wing widths, shape improves the upside-breach Brier score at **8/8 widths** and conditional tail direction at **8/8 widths**, while it improves the two-sided breach score at **0/8 widths**. Adjacent widths are highly correlated, so those counts are a robustness pattern, not eight independent tests.
 
-![Phase II proper scores](results/figures/phase2_brier_scores.png)
-
-![Phase II width sensitivity](results/figures/phase2_width_sensitivity.png)
-
 ### Email-ready research note
 
-For a compact visual summary of the Phase-II question, see the email-ready figure below and the one-page note in [`docs/lehalle_one_page_note.pdf`](docs/lehalle_one_page_note.pdf). Both are generated only from versioned aggregate outputs, so they can be reproduced without the licensed row-level market data.
+For a compact visual summary of the Phase-II question, see the email-ready figure below and the GitHub-readable one-page note in [`docs/lehalle_one_page_note.md`](docs/lehalle_one_page_note.md). The same generator also produces a local PDF for email attachment. Both are built only from versioned aggregate outputs, so they can be reproduced without the licensed row-level market data.
 
-![Where does the smile's extra information live?](results/figures/lehalle_anticipative_map.png)
+![Where does the smile's extra information live?](results/figures/lehalle_anticipative_map.svg)
 
 Rebuild the figure, compact table, and one-page note with:
 
